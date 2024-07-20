@@ -1,0 +1,84 @@
+Let's make a game!
+	name:Игра про ручки
+ 	author:Аноним
+	created:20/07/2024
+	updated:20/07/2024
+	version:0.1
+Settings
+	stylesheet:stuff/bigBlue.css
+	no bulk particles
+Layout
+  *main
+  contains:res, buttons
+  *res
+    contains:Resources
+    class:fullWidth
+  *buttons
+    contains:Buttons
+*store
+  contains:buildings, upgrades
+  *buildings
+    contains:BulkDisplay, Buildings
+    header:Buildings
+    tooltip origin:left
+  *upgrades
+    contains:Upgrades
+    header:Upgrades
+    costs:hide
+    names:hide
+Buttons
+	*bigButton
+		class:bigButton hasFlares
+		desc:Нажмите эту кнопку, чтобы получить одну ручку
+		on click:yield 1 pen
+		show clicks
+Resources
+	*pen|pens
+		name:Ручка|Ручек
+		desc:Это главный ресурс этой игры
+		show earned
+		show max
+Buildings
+	*hand|hands
+		name:Рука|Рук
+		desc:Руки для изготовления ручек
+		on tick:yield 0.1 pens
+		cost:15 pens
+	*transistor|transistors
+		name:Транзистор|Транзисторов
+		desc:Транзистор — электронный компонент из полупроводникового материала, способный небольшим входным сигналом управлять значительным током в выходной цепи, что позволяет использовать его для усиления, генерирования, коммутации и преобразования электрических сигналов.
+		on tick:yield 1 pen
+		cost:100 pens
+		req:15 pens
+	*auto
+		name:Cтанок|Станков
+		desc:Станок для производства ручек
+		on tick:yield 8 pen
+		cost:1100 pens
+		req:100 pens
+Upgrades
+	*handUpgrade1
+		name:Ускорение сборки
+		desc:Лучшая конструкция позволяет ускорить сборку
+		passive:multiply yield of hand by 2
+                passive:multiply yield of bigButton by 2
+		cost:100 pens
+	*handUpgrade2
+		name:Ускорение сборки 2
+		desc:Лучшая конструкция позволяет ускорить сборку
+		passive:multiply yield of hand by 2
+                passive:multiply yield of bigButton by 2
+		cost:500 pens
+		req:handUpgrade1
+	*handUpgrade3
+		name:Ускорение сборки 3
+		desc:Лучшая конструкция позволяет ускорить сборку
+		passive:multiply yield of hand by 2
+                passive:multiply yield of bigButton by 2
+		cost:10000 pens
+		req:handUpgrade2
+Achievements
+	*1pen
+		name:1 ручка
+		desc:Вы произвели одну ручку
+		req:(pens:earned) >= 1
