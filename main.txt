@@ -88,5 +88,5 @@ Shinies
 		frequency:300
 		frequency variation:600
 		movement:growShrink anywhere    
-                on click:yield 0.001*(pens)+13
+                on click:yield 0.001*(pens)+13 pens
 
