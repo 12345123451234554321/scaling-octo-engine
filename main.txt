@@ -19,11 +19,11 @@ Layout
   contains:buildings, upgrades
   *buildings
     contains:BulkDisplay, Buildings
-    header:Buildings
+    header:Постройки
     tooltip origin:left
   *upgrades
     contains:Upgrades
-    header:Upgrades
+    header:Улучшения
     costs:hide
     names:hide
 Buttons
