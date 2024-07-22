@@ -2,8 +2,8 @@ Let's make a game!
 	name:Игра про ручки
  	author:Аноним
 	created:20/07/2024
-	updated:20/07/2024
-	version:0.1
+	updated:22/07/2024
+	version:0.1.0
 Settings
 	stylesheet:stuff/bigBlue.css
 	no bulk particles
@@ -29,7 +29,7 @@ Layout
 Buttons
 	*bigButton
 		class:bigButton hasFlares
-		desc:Нажмите эту кнопку, чтобы получить одну ручку
+		desc:Нажмите эту кнопку, чтобы получить ручки
 		on click:yield 1 pen
 		show clicks
 Resources
@@ -48,14 +48,14 @@ Buildings
 		name:Транзистор|Транзисторов
 		desc:Транзистор — электронный компонент из полупроводникового материала, способный небольшим входным сигналом управлять значительным током в выходной цепи, что позволяет использовать его для усиления, генерирования, коммутации и преобразования электрических сигналов.
 		on tick:yield 1 pen
-		cost:100 pens
-		req:15 pens
+		cost:100 pens	
+                req:(pens:earned)>=15
 	*auto
-		name:Cтанок|Станков
+		name:Станок|Станков
 		desc:Станок для производства ручек
 		on tick:yield 8 pen
 		cost:1100 pens
-		req:100 pens
+		req:(pens:earned)>=100
 Upgrades
 	*handUpgrade1
 		name:Ускорение сборки
@@ -82,3 +82,11 @@ Achievements
 		name:1 ручка
 		desc:Вы произвели одну ручку
 		req:(pens:earned) >= 1
+Shinies
+	*GPen
+		name:Green pen
+		frequency:300
+		frequency variation:600
+		movement:growShrink anywhere    
+                on click:yield 0.001*(pens)+13 pens
+
