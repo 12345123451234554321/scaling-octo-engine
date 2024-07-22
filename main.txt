@@ -87,6 +87,6 @@ Shinies
 		name:Green pen
 		frequency:300
 		frequency variation:600
-		movement:growShrink anywhereanywhere
-                on click:yield 0.001*(pens:now)+13
+		movement:growShrink anywhere    
+on click:yield 0.001*(pens:now)+13
 
