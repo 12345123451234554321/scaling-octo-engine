@@ -82,3 +82,9 @@ Achievements
 		name:1 ручка
 		desc:Вы произвели одну ручку
 		req:(pens:earned) >= 1
+Shinies
+	*GPen
+		name:Green pen
+		frequency:300
+		frequency variation:600
+		movement:growShrink anywhere
