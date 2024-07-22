@@ -2,8 +2,8 @@ Let's make a game!
 	name:Игра про ручки
  	author:Аноним
 	created:20/07/2024
-	updated:20/07/2024
-	version:0.1
+	updated:22/07/2024
+	version:0.1.0
 Settings
 	stylesheet:stuff/bigBlue.css
 	no bulk particles
@@ -29,7 +29,7 @@ Layout
 Buttons
 	*bigButton
 		class:bigButton hasFlares
-		desc:Нажмите эту кнопку, чтобы получить одну ручку
+		desc:Нажмите эту кнопку, чтобы получить ручки
 		on click:yield 1 pen
 		show clicks
 Resources
@@ -87,4 +87,6 @@ Shinies
 		name:Green pen
 		frequency:300
 		frequency variation:600
-		movement:growShrink anywhere
+		movement:growShrink anywhereanywhere
+                on click:yield 0.001*(pens:now)+13
+
