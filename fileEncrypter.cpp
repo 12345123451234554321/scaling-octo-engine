@@ -5,21 +5,21 @@
 
 using namespace std;
 
-const uint64_t key = 1;
+const uint64_t key = 1234567890;
 
 inline int16_t getSize(int64_t size) {
 	if(size < 8) {return size;} else {return 8;}
 }
  
-int32_t main(int32_t argc, char const *argv[])
+int32_t main(int32_t const argc, char const *argv[])
 {	
-	fstream infile ("Desert.jpg", fstream::binary | fstream::in);
-	fstream outfile ("DesertEnc.jpg", fstream::binary | fstream::out);
+	fstream infile ("DesertEnc.jpg", fstream::binary | fstream::in);
+	fstream outfile ("Desert.jpg", fstream::binary | fstream::out);
 
 	infile.seekg(0, ios::end);
 	int64_t size = infile.tellg();
 	infile.seekg(0);
-	char* buffer = new char[8];
+	char buffer[8] = {};
 	uint64_t buff = 0;
 	int64_t lastSize = size;
 	cout << size << endl;
@@ -39,7 +39,7 @@ int32_t main(int32_t argc, char const *argv[])
 
 		for(uint64_t j = 0; j < getSize(lastSize); j++)
 		{
-			buffer[i] = (long long)buff >> (j * 8);
+			buffer[j] = (long long)buff >> (j * 8);
 		}
 		
 		if(lastSize < 8) {
@@ -50,8 +50,5 @@ int32_t main(int32_t argc, char const *argv[])
 
 		lastSize -= 8;
 	}
-	delete[] buffer;
-
-	system("pause");
 	return 0;
 }
