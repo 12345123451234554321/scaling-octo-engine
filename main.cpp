@@ -21,18 +21,17 @@ class Cell {
 		string getGenome() {
 			return genome;
 		}
-		void setGenome(const string genome) {
-			this->genome.resize(GEN_SIZE);
+		void setGenome(const &string genome) {
 			this->genome = genome;
 		}
 	private:
 		string genome;
 		uint32_t age = 0;
-	friend string merge(const Cell c1, const Cell c2);
-	friend string mergeM(const Cell c1, const Cell c2, const uint16_t probMutation, const string mutationLetters);
+	friend string merge(const &Cell c1, const &Cell c2);
+	friend string mergeM(const &Cell c1, const &Cell c2, const uint16_t &probMutation, const string &mutationLetters);
 };
 
-string merge(const Cell c1, const Cell c2) {
+string merge(const &Cell c1, const &Cell c2) {
 	string res;
 	res.resize(GEN_SIZE);
 	for(uint32_t i = 0; i < c1.genome.length(); i++) {
@@ -45,7 +44,7 @@ string merge(const Cell c1, const Cell c2) {
 	return res;
 }
 
-string mergeM(const Cell c1, const Cell c2, const uint16_t probMutation, const string mutationLetters) {
+string mergeM(const &Cell c1, const &Cell c2, const uint16_t &probMutation, const string &mutationLetters) {
 	string res;
 	res.resize(GEN_SIZE);
 	for(uint32_t i = 0; i < c1.genome.length(); i++) {
