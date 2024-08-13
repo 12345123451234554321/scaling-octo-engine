@@ -15,26 +15,25 @@ using namespace std;
 class Cell {
 	public:
 		Cell(string genome) {
+			genome.resize(GEN_SIZE);
 			this->genome = genome;
 		}
 		string getGenome() {
 			return genome;
 		}
-		void setGenome(string genome) {
+		void setGenome(const string genome) {
 			this->genome.resize(GEN_SIZE);
 			this->genome = genome;
 		}
 	private:
 		string genome;
 		uint32_t age = 0;
-	friend string merge(Cell c1, Cell c2);
-	friend string mergeM(Cell c1, Cell c2, uint16_t probMutation, string mutationLetters);
+	friend string merge(const Cell c1, const Cell c2);
+	friend string mergeM(const Cell c1, const Cell c2, const uint16_t probMutation, const string mutationLetters);
 };
 
-string merge(Cell c1, Cell c2) {
+string merge(const Cell c1, const Cell c2) {
 	string res;
-	c1.genome.resize(GEN_SIZE);
-	c2.genome.resize(GEN_SIZE);
 	res.resize(GEN_SIZE);
 	for(uint32_t i = 0; i < c1.genome.length(); i++) {
 		if (rand() % 2 == 0) {
@@ -46,10 +45,8 @@ string merge(Cell c1, Cell c2) {
 	return res;
 }
 
-string mergeM(Cell c1, Cell c2, uint16_t probMutation, string mutationLetters) {
+string mergeM(const Cell c1, const Cell c2, const uint16_t probMutation, const string mutationLetters) {
 	string res;
-	c1.genome.resize(GEN_SIZE);
-	c2.genome.resize(GEN_SIZE);
 	res.resize(GEN_SIZE);
 	for(uint32_t i = 0; i < c1.genome.length(); i++) {
 		if (rand() % 2 == 0) {
